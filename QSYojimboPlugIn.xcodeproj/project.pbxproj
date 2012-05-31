@@ -169,7 +169,7 @@
 		0259C573FE90428111CA0C5A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0410;
+				LastUpgradeCheck = 0420;
 			};
 			buildConfigurationList = 7F6B3EEF085CE8DF000735A8 /* Build configuration list for PBXProject "QSYojimboPlugIn" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -234,10 +234,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 144E38FB10D1134C005B1B5E /* QSPlugIn_Debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				OTHER_LDFLAGS = "-bundle";
 				PRODUCT_NAME = "Yojimbo Module";
-				SDKROOT = "";
 				ZERO_LINK = YES;
 			};
 			name = Debug;
@@ -246,10 +244,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 144E38FD10D1134C005B1B5E /* QSPlugIn_Release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				OTHER_LDFLAGS = "-bundle";
 				PRODUCT_NAME = "Yojimbo Module";
-				SDKROOT = "";
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -258,8 +254,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 144E38F910D1134C005B1B5E /* Debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				SDKROOT = macosx;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 			};
 			name = Debug;
 		};
@@ -267,8 +262,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 144E38FF10D1134C005B1B5E /* Release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				SDKROOT = macosx;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
 			};
 			name = Release;
 		};
