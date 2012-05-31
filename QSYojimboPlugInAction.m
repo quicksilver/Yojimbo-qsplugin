@@ -61,16 +61,16 @@
 {
     // get a list of tags passed in
     NSMutableArray *tagNames = [NSMutableArray arrayWithCapacity:1];
-    if ([[tags stringValue] isEqualToString:@"combined objects"])
+    if ([tags count] == 1)
     {
+        // single tag
+        [tagNames addObject:[tags stringValue]];
+    } else {
         // multiple tags
-        for (QSObject *tag in [tags objectForCache:kQSObjectComponents])
+        for (QSObject *tag in [tags splitObjects])
         {
             [tagNames addObject:[tag stringValue]];
         }
-    } else {
-        // single tag
-        [tagNames addObject:[tags stringValue]];
     }
     // add the tags to the item(s) via AppleScript
     // NSLog(@"attempting to tag %@ with %@", [dObject identifier], tagNames);
