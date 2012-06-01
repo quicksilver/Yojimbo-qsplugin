@@ -2,8 +2,7 @@
 //  QSYojimboPlugInSource.m
 //  QSYojimboPlugIn
 //
-//  Created by Nicholas Jitkoff on 5/14/06.
-//  Copyright __MyCompanyName__ 2006. All rights reserved.
+//  Created by Rob McBroom 2012/05/31
 //
 
 #import "QSYojimboPlugInSource.h"
@@ -131,10 +130,14 @@
     return TRUE;
 }
 
-- (NSArray *) objectsForEntry:(NSDictionary *)theEntry{
-    NSString *path = [@"~/Library/Caches/Metadata/com.barebones.yojimbo" stringByStandardizingPath];
-    NSFileManager *manager = [NSFileManager defaultManager];
-    NSArray *contents = [manager directoryContentsAtPath:path];
+- (NSArray *) objectsForEntry:(NSDictionary *)theEntry
+{
+    NSMetadataQuery *query = [[NSMetadataQuery alloc] init];
+    [query setValueListAttributes:[NSArray arrayWithObject:NSMetadataItemPathKey]];
+    // find all Yojimbo items belonging to the user
+    NSArray *yojimboItems = [query resultsForSearchString:@"kMDItemKind LIKE 'Yojimbo*'" inFolders:[NSSet setWithObject:NSMetadataQueryUserHomeScope]];
+;
+    [query release];
     // pretty names for various types of items Yojimbo stores
     NSDictionary *typeTable = [NSDictionary dictionaryWithObjectsAndKeys:
         @"Yojimbo Note", @"com.barebones.yojimbo.yojimbonote",
@@ -152,77 +155,70 @@
     NSMutableDictionary *tags = [NSMutableDictionary dictionaryWithCapacity:1];
     NSMutableArray *untaggedItems = [NSMutableArray arrayWithCapacity:1];
     
-    // NSLog(@"Yojimbo plug-in hitting the filesystem");
-    for (NSString *topLevelDir in contents) {
-        topLevelDir = [path stringByAppendingPathComponent:topLevelDir];
-        for (NSString *secondLevelDir in [manager directoryContentsAtPath:topLevelDir]) {
-            secondLevelDir = [topLevelDir stringByAppendingPathComponent:secondLevelDir];
-            for (NSString *yojimboItem in [manager directoryContentsAtPath:secondLevelDir]) {
-                if ([yojimboItem rangeOfString:@"yojimbo"].location == NSNotFound) continue;
-                yojimboItem = [secondLevelDir stringByAppendingPathComponent:yojimboItem];
-                NSDictionary *item = [NSDictionary dictionaryWithContentsOfFile:yojimboItem];
-                newObject = nil;
-                
-                @try {
-                    if ([[item valueForKey:@"itemKind"] isEqualToString:@"com.barebones.yojimbo.yojimbobookmark"]) {
-                        // Christ, BareBones! You can't settle on a capitalization scheme for dictionary keys?
-                        NSString *URLString;
-                        if ([item valueForKey:@"URLString"]) {
-                            URLString = [item valueForKey:@"URLString"];
-                        } else if ([item valueForKey:@"urlString"]) {
-                            URLString = [item valueForKey:@"urlString"];
-                        }
-                        newObject = [QSObject URLObjectWithURL:URLString title:[item valueForKey:@"name"]];
-                    } else {
-                        newObject = [QSObject objectWithName:[item valueForKey:@"name"]];
-                    }
-                    
-                    if ([[item valueForKey:@"encrypted"]boolValue]){
-                        [newObject setDetails:[NSString stringWithFormat:@"%@ (Encrypted)", [typeTable valueForKey:[item valueForKey:@"itemKind"]]]];
-                    } else {
-                        [newObject setDetails:[typeTable valueForKey:[item valueForKey:@"itemKind"]]];
-                    }
-                    [newObject setIdentifier:[item valueForKey:@"uuid"]];
-                    [newObject setPrimaryType:kQSYojimboPlugInType];
-                    [newObject setObject:[item valueForKey:@"uuid"] forType:kQSYojimboPlugInType];
-                    if ([[item valueForKey:@"itemKind"] isEqualToString:@"com.barebones.yojimbo.yojimbonote"] && [item valueForKey:@"content"])
-                    {
-                        // this will enable actions like "Paste" and "Large Type" for notes
-                        [newObject setObject:[item valueForKey:@"content"] forType:QSTextType];
-                    }
-                    // store the type of Yojimbo item
-                    [newObject setObject:[item valueForKey:@"itemKind"] forMeta:@"itemKind"];
-                    // store this item's tags
-                    [newObject setObject:[item valueForKey:@"tags"] forMeta:@"tags"];
-                    
-                    if ([[item valueForKey:@"tags"] count] == 0)
-                    {
-                        [untaggedItems addObject:[item valueForKey:@"uuid"]];
-                    } else {
-                        // get a list of all tags and the associated items
-                        for (NSString *tag in [item valueForKey:@"tags"])
-                        {
-                            if ([[tags allKeys] containsObject:tag])
-                            {
-                                // append to the list
-                                [[tags objectForKey:tag] addObject:[item valueForKey:@"uuid"]];
-                            } else {
-                                // create a list of items for this tag
-                                NSMutableArray *itemsForTag = [NSMutableArray arrayWithObject:[item valueForKey:@"uuid"]];
-                                [tags setObject:itemsForTag forKey:tag];
-                            }
-                        }
-                    }
-                    
-                    if (newObject)
-                    {
-                        [objects addObject:newObject];
-                    }
+    NSString *yojimboItem = nil;
+    for (NSMetadataItem *result in yojimboItems) {
+        yojimboItem = [result valueForAttribute:NSMetadataItemPathKey];
+        NSDictionary *item = [NSDictionary dictionaryWithContentsOfFile:yojimboItem];
+        newObject = nil;
+        
+        @try {
+            if ([[item valueForKey:@"itemKind"] isEqualToString:@"com.barebones.yojimbo.yojimbobookmark"]) {
+                // Christ, BareBones! You can't settle on a capitalization scheme for dictionary keys?
+                NSString *URLString;
+                if ([item valueForKey:@"URLString"]) {
+                    URLString = [item valueForKey:@"URLString"];
+                } else if ([item valueForKey:@"urlString"]) {
+                    URLString = [item valueForKey:@"urlString"];
                 }
-                @catch (id theException) {
-                    NSLog(@"error with: %@ %@", item, theException);
+                newObject = [QSObject URLObjectWithURL:URLString title:[item valueForKey:@"name"]];
+            } else {
+                newObject = [QSObject objectWithName:[item valueForKey:@"name"]];
+            }
+            
+            if ([[item valueForKey:@"encrypted"]boolValue]){
+                [newObject setDetails:[NSString stringWithFormat:@"%@ (Encrypted)", [typeTable valueForKey:[item valueForKey:@"itemKind"]]]];
+            } else {
+                [newObject setDetails:[typeTable valueForKey:[item valueForKey:@"itemKind"]]];
+            }
+            [newObject setIdentifier:[item valueForKey:@"uuid"]];
+            [newObject setPrimaryType:kQSYojimboPlugInType];
+            [newObject setObject:[item valueForKey:@"uuid"] forType:kQSYojimboPlugInType];
+            if ([[item valueForKey:@"itemKind"] isEqualToString:@"com.barebones.yojimbo.yojimbonote"] && [item valueForKey:@"content"])
+            {
+                // this will enable actions like "Paste" and "Large Type" for notes
+                [newObject setObject:[item valueForKey:@"content"] forType:QSTextType];
+            }
+            // store the type of Yojimbo item
+            [newObject setObject:[item valueForKey:@"itemKind"] forMeta:@"itemKind"];
+            // store this item's tags
+            [newObject setObject:[item valueForKey:@"tags"] forMeta:@"tags"];
+            
+            if ([(NSArray *)[item valueForKey:@"tags"] count] == 0)
+            {
+                [untaggedItems addObject:[item valueForKey:@"uuid"]];
+            } else {
+                // get a list of all tags and the associated items
+                for (NSString *tag in [item valueForKey:@"tags"])
+                {
+                    if ([[tags allKeys] containsObject:tag])
+                    {
+                        // append to the list
+                        [[tags objectForKey:tag] addObject:[item valueForKey:@"uuid"]];
+                    } else {
+                        // create a list of items for this tag
+                        NSMutableArray *itemsForTag = [NSMutableArray arrayWithObject:[item valueForKey:@"uuid"]];
+                        [tags setObject:itemsForTag forKey:tag];
+                    }
                 }
             }
+            
+            if (newObject)
+            {
+                [objects addObject:newObject];
+            }
+        }
+        @catch (id theException) {
+            NSLog(@"error with: %@ %@", item, theException);
         }
     }
     // add tags to the catalog
