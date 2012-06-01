@@ -123,9 +123,10 @@
         [object setChildren:children];
     } else {
         // right-arrowed into Yojimbo
-        // return a list of tags
-        NSArray *tags = [QSLib scoredArrayForString:nil inSet:[QSLib arrayForType:kQSYojimboTagType]];
-        [object setChildren:tags];
+        // show all items followed by all tags
+        NSMutableArray *children = [NSMutableArray arrayWithArray:[QSLib scoredArrayForString:nil inSet:[QSLib arrayForType:kQSYojimboPlugInType]]];
+        [children addObjectsFromArray:[QSLib scoredArrayForString:nil inSet:[QSLib arrayForType:kQSYojimboTagType]]];
+        [object setChildren:children];
     }
     return TRUE;
 }
