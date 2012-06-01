@@ -173,6 +173,7 @@
                 newObject = [QSObject URLObjectWithURL:URLString title:[item valueForKey:@"name"]];
             } else {
                 newObject = [QSObject objectWithName:[item valueForKey:@"name"]];
+                [newObject setPrimaryType:kQSYojimboPlugInType];
             }
             
             if ([[item valueForKey:@"encrypted"]boolValue]){
@@ -181,7 +182,6 @@
                 [newObject setDetails:[typeTable valueForKey:[item valueForKey:@"itemKind"]]];
             }
             [newObject setIdentifier:[item valueForKey:@"uuid"]];
-            [newObject setPrimaryType:kQSYojimboPlugInType];
             [newObject setObject:[item valueForKey:@"uuid"] forType:kQSYojimboPlugInType];
             if ([[item valueForKey:@"itemKind"] isEqualToString:@"com.barebones.yojimbo.yojimbonote"] && [item valueForKey:@"content"])
             {
