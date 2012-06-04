@@ -13,8 +13,8 @@
 		8D1AC9700486D14A00FE50C9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD92D38A0106425D02CA0E72 /* Cocoa.framework */; };
 		D426EB8C157D40D000B551E6 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D426EB8A157D40C100B551E6 /* ScriptingBridge.framework */; };
 		D426EB8D157D40F200B551E6 /* Yojimbo.app in Sources */ = {isa = PBXBuildFile; fileRef = D4F7C8B7157D40030082861B /* Yojimbo.app */; };
-		D44F1690157D492500C14FE2 /* QSFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44F168F157D492500C14FE2 /* QSFoundation.framework */; };
-		D44F1693157D493000C14FE2 /* QSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44F1692157D493000C14FE2 /* QSCore.framework */; };
+		D44F1694157D4A6100C14FE2 /* QSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44F1692157D493000C14FE2 /* QSCore.framework */; };
+		D44F1695157D4A6300C14FE2 /* QSFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44F168F157D492500C14FE2 /* QSFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -60,10 +60,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D44F1693157D493000C14FE2 /* QSCore.framework in Frameworks */,
-				D44F1690157D492500C14FE2 /* QSFoundation.framework in Frameworks */,
 				8D1AC9700486D14A00FE50C9 /* Cocoa.framework in Frameworks */,
 				D426EB8C157D40D000B551E6 /* ScriptingBridge.framework in Frameworks */,
+				D44F1695157D4A6300C14FE2 /* QSFoundation.framework in Frameworks */,
+				D44F1694157D4A6100C14FE2 /* QSCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -73,8 +73,6 @@
 		0259C574FE90428111CA0C5A /* QSYojimboPlugIn */ = {
 			isa = PBXGroup;
 			children = (
-				D44F1692157D493000C14FE2 /* QSCore.framework */,
-				D44F168F157D492500C14FE2 /* QSFoundation.framework */,
 				144E38F510D11331005B1B5E /* Configuration */,
 				32DBCF9E0370C38000C91783 /* Classes */,
 				32DBCF9F0370C38200C91783 /* Other Sources */,
@@ -121,6 +119,8 @@
 		2E58F364FFB232C311CA0CBA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D44F1692157D493000C14FE2 /* QSCore.framework */,
+				D44F168F157D492500C14FE2 /* QSFoundation.framework */,
 				D426EB8A157D40C100B551E6 /* ScriptingBridge.framework */,
 				DD92D38A0106425D02CA0E72 /* Cocoa.framework */,
 			);
