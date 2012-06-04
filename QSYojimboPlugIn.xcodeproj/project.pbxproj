@@ -13,6 +13,8 @@
 		8D1AC9700486D14A00FE50C9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD92D38A0106425D02CA0E72 /* Cocoa.framework */; };
 		D426EB8C157D40D000B551E6 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D426EB8A157D40C100B551E6 /* ScriptingBridge.framework */; };
 		D426EB8D157D40F200B551E6 /* Yojimbo.app in Sources */ = {isa = PBXBuildFile; fileRef = D4F7C8B7157D40030082861B /* Yojimbo.app */; };
+		D44F1690157D492500C14FE2 /* QSFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44F168F157D492500C14FE2 /* QSFoundation.framework */; };
+		D44F1693157D493000C14FE2 /* QSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44F1692157D493000C14FE2 /* QSCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -47,6 +49,8 @@
 		8D1AC9730486D14A00FE50C9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1AC9740486D14A00FE50C9 /* Yojimbo Module.qsplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Yojimbo Module.qsplugin"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D426EB8A157D40C100B551E6 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
+		D44F168F157D492500C14FE2 /* QSFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QSFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D44F1692157D493000C14FE2 /* QSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QSCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F7C8B7157D40030082861B /* Yojimbo.app */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Yojimbo.app; path = /Applications/Yojimbo.app; sourceTree = "<absolute>"; };
 		DD92D38A0106425D02CA0E72 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
@@ -56,6 +60,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D44F1693157D493000C14FE2 /* QSCore.framework in Frameworks */,
+				D44F1690157D492500C14FE2 /* QSFoundation.framework in Frameworks */,
 				8D1AC9700486D14A00FE50C9 /* Cocoa.framework in Frameworks */,
 				D426EB8C157D40D000B551E6 /* ScriptingBridge.framework in Frameworks */,
 			);
@@ -67,6 +73,8 @@
 		0259C574FE90428111CA0C5A /* QSYojimboPlugIn */ = {
 			isa = PBXGroup;
 			children = (
+				D44F1692157D493000C14FE2 /* QSCore.framework */,
+				D44F168F157D492500C14FE2 /* QSFoundation.framework */,
 				144E38F510D11331005B1B5E /* Configuration */,
 				32DBCF9E0370C38000C91783 /* Classes */,
 				32DBCF9F0370C38200C91783 /* Other Sources */,
@@ -233,6 +241,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 144E38FB10D1134C005B1B5E /* QSPlugIn_Debug.xcconfig */;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/tmp/QS/build/Release,
+				);
 				OTHER_LDFLAGS = "-bundle";
 				PRODUCT_NAME = "Yojimbo Module";
 				ZERO_LINK = YES;
@@ -243,6 +255,10 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 144E38FD10D1134C005B1B5E /* QSPlugIn_Release.xcconfig */;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/tmp/QS/build/Release,
+				);
 				OTHER_LDFLAGS = "-bundle";
 				PRODUCT_NAME = "Yojimbo Module";
 				ZERO_LINK = NO;
