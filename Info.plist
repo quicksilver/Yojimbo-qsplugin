@@ -16,7 +16,7 @@
 	<string>BNDL</string>
 	<key>CFBundleVersion</key>
 	<string>11D</string>
-	<key>CFBundleSignature</key>
+	<key>CFBundleShortVersionString</key>
 	<string>2.0.1</string>
 	<key>QSActions</key>
 	<dict>
