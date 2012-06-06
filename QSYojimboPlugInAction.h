@@ -12,7 +12,6 @@
 
 @interface QSYojimboPlugInAction : QSActionProvider
 {
-    YojimboApplication *Yojimbo;
+	YojimboApplication *Yojimbo;
 }
 @end
-
