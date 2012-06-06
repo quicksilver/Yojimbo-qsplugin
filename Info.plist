@@ -132,6 +132,25 @@
 			<key>validatesObjects</key>
 			<true/>
 		</dict>
+		<key>QSYojimboPrependAction</key>
+		<dict>
+			<key>actionClass</key>
+			<string>QSYojimboPlugInAction</string>
+			<key>actionSelector</key>
+			<string>prependToNote:content:</string>
+			<key>directTypes</key>
+			<array>
+				<string>com.barebones.yojimbo.item</string>
+			</array>
+			<key>enabled</key>
+			<true/>
+			<key>icon</key>
+			<string>com.barebones.yojimbo</string>
+			<key>name</key>
+			<string>Prepend text…</string>
+			<key>validatesObjects</key>
+			<true/>
+		</dict>
 		<key>QSYojimboShowAction</key>
 		<dict>
 			<key>actionClass</key>

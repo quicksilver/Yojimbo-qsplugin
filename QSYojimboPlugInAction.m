@@ -79,6 +79,15 @@
 	return nil;
 }
 
+- (QSObject *)prependToNote:(QSObject *)dObject content:(QSObject *)iObject
+{
+	NSString *uuid = [dObject identifier];
+	NSString *text = [iObject stringValue];
+	YojimboNoteItem *note = [self yojimboItemWithUUID:uuid];
+	[Yojimbo prepend:text to:note];
+	return nil;
+}
+
 - (QSObject *)appendToNote:(QSObject *)dObject content:(QSObject *)iObject
 {
 	NSString *uuid = [dObject identifier];
@@ -119,9 +128,10 @@
 	{
 		[actions addObject:@"QSYojimboShowAction"];
 		[actions addObject:@"QSYojimboTagAction"];
-		// only allow appending to notes
+		// only allow prepending/appending to notes
 		if ([[dObject objectForMeta:@"itemKind"] isEqualToString:@"com.barebones.yojimbo.yojimbonote"])
 		{
+			[actions addObject:@"QSYojimboPrependAction"];
 			[actions addObject:@"QSYojimboAppendAction"];
 		}
 	} else {
