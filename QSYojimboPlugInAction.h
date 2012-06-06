@@ -8,10 +8,10 @@
 
 #import <QSCore/QSObject.h>
 #import <QSCore/QSActionProvider.h>
-#import "QSYojimboPlugInAction.h"
+@class YojimboApplication;
 
 @interface QSYojimboPlugInAction : QSActionProvider
 {
+	YojimboApplication *Yojimbo;
 }
 @end
-

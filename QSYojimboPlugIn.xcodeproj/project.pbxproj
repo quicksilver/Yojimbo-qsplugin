@@ -7,37 +7,49 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7F35FF4007F9ACD90056051D /* QSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F35FF3C07F9ACD90056051D /* QSCore.framework */; };
-		7F35FF4207F9ACD90056051D /* QSFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F35FF3E07F9ACD90056051D /* QSFoundation.framework */; };
 		7F492FF70A16E3D100643204 /* QSYojimboPlugInAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F492FF50A16E3D100643204 /* QSYojimboPlugInAction.m */; };
-		7F49303B0A16EC3900643204 /* Yojimbo.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 7F49301F0A16E9AD00643204 /* Yojimbo.scpt */; };
 		7F4930B70A175E0B00643204 /* QSYojimboPlugInSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F4930B60A175E0B00643204 /* QSYojimboPlugInSource.m */; };
 		8D1AC9700486D14A00FE50C9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD92D38A0106425D02CA0E72 /* Cocoa.framework */; };
+		D426EB8C157D40D000B551E6 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D426EB8A157D40C100B551E6 /* ScriptingBridge.framework */; };
+		D426EB8D157D40F200B551E6 /* Yojimbo.app in Sources */ = {isa = PBXBuildFile; fileRef = D4F7C8B7157D40030082861B /* Yojimbo.app */; };
+		D44F1694157D4A6100C14FE2 /* QSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44F1692157D493000C14FE2 /* QSCore.framework */; };
+		D44F1695157D4A6300C14FE2 /* QSFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44F168F157D492500C14FE2 /* QSFoundation.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		D426EB8E157D40FB00B551E6 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.app";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+				"$(DERIVED_FILES_DIR)/$(INPUT_FILE_BASE).h",
+			);
+			script = "sdef \"$INPUT_FILE_PATH\" | sdp -fh -o \"$DERIVED_FILES_DIR\" --basename \"$INPUT_FILE_BASE\" --bundleid `defaults read \"$INPUT_FILE_PATH/Contents/Info\" CFBundleIdentifier`";
+		};
+/* End PBXBuildRule section */
 
 /* Begin PBXFileReference section */
 		144E38F810D1134C005B1B5E /* Common.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
 		144E38F910D1134C005B1B5E /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		144E38FA10D1134C005B1B5E /* Developer.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Developer.xcconfig; sourceTree = "<group>"; };
 		144E38FB10D1134C005B1B5E /* QSPlugIn_Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = QSPlugIn_Debug.xcconfig; sourceTree = "<group>"; };
-		144E38FC10D1134C005B1B5E /* QSPlugIn_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSPlugIn_Prefix.pch; sourceTree = "<group>"; };
+		144E38FC10D1134C005B1B5E /* Quicksilver.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Quicksilver.pch; path = ../../../../../../../private/tmp/QS/Configuration/Quicksilver.pch; sourceTree = "<group>"; };
 		144E38FD10D1134C005B1B5E /* QSPlugIn_Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = QSPlugIn_Release.xcconfig; sourceTree = "<group>"; };
 		144E38FE10D1134C005B1B5E /* QSPlugIn.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = QSPlugIn.xcconfig; sourceTree = "<group>"; };
 		144E38FF10D1134C005B1B5E /* Release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
 		32DBCF980370C29C00C91783 /* QSYojimboPlugInDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSYojimboPlugInDefines.h; sourceTree = "<group>"; };
-		7F35FF3C07F9ACD90056051D /* QSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QSCore.framework; sourceTree = QSFrameworks; };
-		7F35FF3D07F9ACD90056051D /* QSEffects.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QSEffects.framework; sourceTree = QSFrameworks; };
-		7F35FF3E07F9ACD90056051D /* QSFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QSFoundation.framework; sourceTree = QSFrameworks; };
-		7F35FF3F07F9ACD90056051D /* QSInterface.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QSInterface.framework; sourceTree = QSFrameworks; };
 		7F492FF50A16E3D100643204 /* QSYojimboPlugInAction.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = QSYojimboPlugInAction.m; sourceTree = "<group>"; };
 		7F492FF60A16E3D100643204 /* QSYojimboPlugInAction.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = QSYojimboPlugInAction.h; sourceTree = "<group>"; };
-		7F49301F0A16E9AD00643204 /* Yojimbo.scpt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.scpt; path = Yojimbo.scpt; sourceTree = "<group>"; };
 		7F4930B50A175E0B00643204 /* QSYojimboPlugInSource.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = QSYojimboPlugInSource.h; sourceTree = "<group>"; };
 		7F4930B60A175E0B00643204 /* QSYojimboPlugInSource.m */ = {isa = PBXFileReference; fileEncoding = 30; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = QSYojimboPlugInSource.m; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
-		7FFA8E9C0816CCCA00A858CD /* QSEffects.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QSEffects.framework; sourceTree = QSFrameworks; };
-		7FFA8E9D0816CCCA00A858CD /* QSInterface.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QSInterface.framework; sourceTree = QSFrameworks; };
 		8D1AC9730486D14A00FE50C9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1AC9740486D14A00FE50C9 /* Yojimbo Module.qsplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Yojimbo Module.qsplugin"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D426EB8A157D40C100B551E6 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
+		D44F168F157D492500C14FE2 /* QSFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QSFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D44F1692157D493000C14FE2 /* QSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QSCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4F7C8B7157D40030082861B /* Yojimbo.app */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Yojimbo.app; path = /Applications/Yojimbo.app; sourceTree = "<absolute>"; };
 		DD92D38A0106425D02CA0E72 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -47,8 +59,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8D1AC9700486D14A00FE50C9 /* Cocoa.framework in Frameworks */,
-				7F35FF4007F9ACD90056051D /* QSCore.framework in Frameworks */,
-				7F35FF4207F9ACD90056051D /* QSFoundation.framework in Frameworks */,
+				D426EB8C157D40D000B551E6 /* ScriptingBridge.framework in Frameworks */,
+				D44F1695157D4A6300C14FE2 /* QSFoundation.framework in Frameworks */,
+				D44F1694157D4A6100C14FE2 /* QSCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,8 +84,8 @@
 		0259C582FE90428111CA0C5A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7F49301F0A16E9AD00643204 /* Yojimbo.scpt */,
 				8D1AC9730486D14A00FE50C9 /* Info.plist */,
+				D4F7C8B7157D40030082861B /* Yojimbo.app */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -84,7 +97,7 @@
 				144E38F910D1134C005B1B5E /* Debug.xcconfig */,
 				144E38FA10D1134C005B1B5E /* Developer.xcconfig */,
 				144E38FB10D1134C005B1B5E /* QSPlugIn_Debug.xcconfig */,
-				144E38FC10D1134C005B1B5E /* QSPlugIn_Prefix.pch */,
+				144E38FC10D1134C005B1B5E /* Quicksilver.pch */,
 				144E38FD10D1134C005B1B5E /* QSPlugIn_Release.xcconfig */,
 				144E38FE10D1134C005B1B5E /* QSPlugIn.xcconfig */,
 				144E38FF10D1134C005B1B5E /* Release.xcconfig */,
@@ -103,12 +116,10 @@
 		2E58F364FFB232C311CA0CBA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D44F1692157D493000C14FE2 /* QSCore.framework */,
+				D44F168F157D492500C14FE2 /* QSFoundation.framework */,
+				D426EB8A157D40C100B551E6 /* ScriptingBridge.framework */,
 				DD92D38A0106425D02CA0E72 /* Cocoa.framework */,
-				7F35FF3C07F9ACD90056051D /* QSCore.framework */,
-				7F35FF3E07F9ACD90056051D /* QSFoundation.framework */,
-				7FFA8E9C0816CCCA00A858CD /* QSEffects.framework */,
-				7FFA8E9D0816CCCA00A858CD /* QSInterface.framework */,
-				7FC20C8107FB741700FDD3CA /* Other Frameworks */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -132,15 +143,6 @@
 			name = "Other Sources";
 			sourceTree = "<group>";
 		};
-		7FC20C8107FB741700FDD3CA /* Other Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				7F35FF3D07F9ACD90056051D /* QSEffects.framework */,
-				7F35FF3F07F9ACD90056051D /* QSInterface.framework */,
-			);
-			name = "Other Frameworks";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -154,6 +156,7 @@
 				E1022B2806B3475D00299BEC /* ShellScript */,
 			);
 			buildRules = (
+				D426EB8E157D40FB00B551E6 /* PBXBuildRule */,
 			);
 			dependencies = (
 			);
@@ -169,7 +172,7 @@
 		0259C573FE90428111CA0C5A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0410;
+				LastUpgradeCheck = 0420;
 			};
 			buildConfigurationList = 7F6B3EEF085CE8DF000735A8 /* Build configuration list for PBXProject "QSYojimboPlugIn" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -195,7 +198,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F49303B0A16EC3900643204 /* Yojimbo.scpt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -222,6 +224,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D426EB8D157D40F200B551E6 /* Yojimbo.app in Sources */,
 				7F492FF70A16E3D100643204 /* QSYojimboPlugInAction.m in Sources */,
 				7F4930B70A175E0B00643204 /* QSYojimboPlugInSource.m in Sources */,
 			);
@@ -234,10 +237,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 144E38FB10D1134C005B1B5E /* QSPlugIn_Debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/tmp/QS/build/Release,
+				);
 				OTHER_LDFLAGS = "-bundle";
 				PRODUCT_NAME = "Yojimbo Module";
-				SDKROOT = "";
 				ZERO_LINK = YES;
 			};
 			name = Debug;
@@ -246,10 +251,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 144E38FD10D1134C005B1B5E /* QSPlugIn_Release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/tmp/QS/build/Release,
+				);
 				OTHER_LDFLAGS = "-bundle";
 				PRODUCT_NAME = "Yojimbo Module";
-				SDKROOT = "";
 				ZERO_LINK = NO;
 			};
 			name = Release;
@@ -258,8 +265,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 144E38F910D1134C005B1B5E /* Debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -267,8 +272,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 144E38FF10D1134C005B1B5E /* Release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
-				SDKROOT = macosx;
 			};
 			name = Release;
 		};
