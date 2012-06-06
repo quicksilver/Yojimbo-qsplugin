@@ -68,7 +68,10 @@
 - (QSObject *)addTagsToItem:(QSObject *)dObject withTags:(QSObject *)tags
 {
 	// get a list of tags passed in
-	NSArray *tagNames = [tags arrayForType:kQSYojimboTagType];
+	NSMutableArray *tagNames = [NSMutableArray arrayWithCapacity:[tags count]];
+	for (QSObject *tag in [tags splitObjects]) {
+		[tagNames addObject:[tag stringValue]];
+	}
 	// add the tags to the item(s)
 	YojimboDatabaseItem *yojimboItem = nil;
 	for (NSString *uuid in [dObject arrayForType:kQSYojimboPlugInType])
