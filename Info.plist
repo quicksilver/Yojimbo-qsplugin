@@ -256,7 +256,7 @@
 &lt;p&gt;There are a couple of useful tricks specific to notes in Yojimbo. In addition to being able to append to them, they also support all of the standard actions you can perform on text in Quicksilver like &quot;Paste&quot;, &quot;Large Type&quot;, &quot;E-mail…&quot;, etc. Each of these actions will use the plain-text version of the note&apos;s contents.&lt;/p&gt;</string>
 		<key>icon</key>
 		<string>com.barebones.yojimbo</string>
-		<key>relatedBundles </key>
+		<key>relatedBundles</key>
 		<array>
 			<string>com.barebones.yojimbo</string>
 		</array>
