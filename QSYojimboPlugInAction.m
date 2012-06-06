@@ -8,46 +8,54 @@
 
 #import "QSYojimboPlugInAction.h"
 #import "QSYojimboPlugInDefines.h"
+#import "Yojimbo.h"
 
 @implementation QSYojimboPlugInAction
 
 #define kQSYojimboPlugInAction @"QSYojimboPlugInAction"
 
-- (NSAppleScript *)script{
-    NSString *scriptPath=[[NSBundle bundleForClass:[self class]]pathForResource:@"Yojimbo" ofType:@"scpt"];
-    if (!scriptPath)return nil;
-    NSAppleScript *script=[[NSAppleScript alloc]initWithContentsOfURL:[NSURL fileURLWithPath:scriptPath] error:nil];
-    return script;
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        Yojimbo = [[SBApplication applicationWithBundleIdentifier:@"com.barebones.yojimbo"] retain];
+    }
+    return self;
 }
+
+- (void)dealloc
+{
+    [Yojimbo release];
+    [super dealloc];
+}
+
+# pragma mark - Quicksilver Actions
 
 - (QSObject *)addObject:(QSObject *)dObject withName:(QSObject *)itemName
 {
-    NSString *addRoutine = nil;
-    id itemContent = [dObject stringValue];
+	NSString *uuid = nil;
     // figure out how to add this thing based on type
     if ([dObject containsType:QSURLType])
     {
         // add this as a "bookmark"
-        addRoutine = @"add_url";
+        YojimboBookmarkItem *bookmark = [[[Yojimbo classForScriptingClass:@"bookmark item"] alloc] init];
+        [[Yojimbo databaseItems] addObject:bookmark];
+        [bookmark setName:[itemName stringValue]];
+        [bookmark setLocation:[dObject objectForType:QSURLType]];
+        uuid = [bookmark id];
     } else if ([dObject containsType:QSFilePathType]) {
         // import a file
-        addRoutine = @"add_file";
-        // override default content
-        itemContent = [dObject objectForType:QSFilePathType];
+        id importedItem = [Yojimbo import:[dObject objectForType:QSFilePathType]];
+        [(YojimboDatabaseItem *)importedItem setName:[itemName stringValue]];
+        uuid = [(YojimboDatabaseItem *)importedItem id];
     } else {
         // add this as a "note"
-        addRoutine = @"add_note";
+        YojimboNoteItem *note = [[[Yojimbo classForScriptingClass:@"note item"] alloc] init];
+        [[Yojimbo databaseItems] addObject:note];
+        [note setName:[itemName stringValue]];
+        [note setContents:[dObject stringValue]];
+        uuid = [note id];
     }
-    NSAppleEventDescriptor *appleScriptResult = [[self script]
-        executeSubroutine:addRoutine
-        arguments:[NSArray arrayWithObjects:
-            [itemName stringValue],
-            itemContent,
-            nil
-        ]
-        error:nil];
-    
-    NSString *uuid= [appleScriptResult stringValue];
     QSObject *newObject=[QSObject makeObjectWithIdentifier:uuid];
     [newObject setName:[itemName stringValue]];
     [newObject setDetails:@"New Yojimbo Item"];
@@ -60,64 +68,48 @@
 - (QSObject *)addTagsToItem:(QSObject *)dObject withTags:(QSObject *)tags
 {
     // get a list of tags passed in
-    NSMutableArray *tagNames = [NSMutableArray arrayWithCapacity:1];
-    if ([tags count] == 1)
+    NSArray *tagNames = [tags arrayForType:kQSYojimboTagType];
+    // add the tags to the item(s)
+    YojimboDatabaseItem *yojimboItem = nil;
+    for (NSString *uuid in [dObject arrayForType:kQSYojimboPlugInType])
     {
-        // single tag
-        [tagNames addObject:[tags stringValue]];
-    } else {
-        // multiple tags
-        for (QSObject *tag in [tags splitObjects])
-        {
-            [tagNames addObject:[tag stringValue]];
-        }
-    }
-    // add the tags to the item(s) via AppleScript
-    // NSLog(@"attempting to tag %@ with %@", [dObject identifier], tagNames);
-    for (NSString *yojimboItem in [dObject arrayForType:kQSYojimboPlugInType])
-    {
-        [[self script]
-            executeSubroutine:@"add_tags"
-            arguments:[NSArray arrayWithObjects:
-                yojimboItem,
-                tagNames,
-                nil
-            ]
-            error:nil
-        ];
+        yojimboItem = [self yojimboItemWithUUID:uuid];
+        [Yojimbo addTags:tagNames to:yojimboItem];
     }
     return nil;
 }
 
-- (QSObject *)appendToNote:(QSObject *)dObject content:(QSObject *)iObject{
-    NSString *uuid=[dObject identifier];
-    NSString *text=[iObject stringValue];
-    [[self script]
-        executeSubroutine:@"append_to_note"
-        arguments:[NSArray arrayWithObjects:uuid, text, nil]
-        error:nil
-    ];
+- (QSObject *)appendToNote:(QSObject *)dObject content:(QSObject *)iObject
+{
+    NSString *uuid = [dObject identifier];
+    NSString *text = [iObject stringValue];
+    YojimboNoteItem *note = [self yojimboItemWithUUID:uuid];
+    [Yojimbo append:text to:note];
     return nil;
 }
 
-- (QSObject *)addObjectArchive:(QSObject *)dObject{
-    NSAppleEventDescriptor *appleScriptResult=[[self script] executeSubroutine:@"add_url_archive" arguments:[NSArray arrayWithObject:[dObject objectForType:QSURLType]]
-                                                             error:nil];
-    NSString *uuid= [appleScriptResult stringValue];
-    QSObject *newObject=[QSObject makeObjectWithIdentifier:uuid];   
+- (QSObject *)addObjectArchive:(QSObject *)dObject
+{
+    NSString *urlString = [dObject objectForType:QSURLType];
+    NSString *addUrlArchive = [NSString stringWithFormat:@"on add_url_archive(theURL)\rtell application \"Yojimbo\" to return id of (make new web archive item with contents theURL)\rend add_url_archive"];
+    NSAppleScript *script = [[NSAppleScript alloc] initWithSource:addUrlArchive];
+    NSString *uuid = [[script executeSubroutine:@"add_url_archive" arguments:[NSArray arrayWithObject:urlString] error:nil] stringValue];
+    QSObject *newObject = [QSObject makeObjectWithIdentifier:uuid];
     [newObject setName:[dObject name]];
-    [newObject setIdentifier:uuid];
     [newObject setObject:uuid forType:kQSYojimboPlugInType];
     [newObject setPrimaryType:kQSYojimboPlugInType];
-    //NSLog(@"newob %@",newObject);
+    [newObject setDetails:urlString];
     return newObject;
 }
 
-- (QSObject *)showObject:(QSObject *)dObject{
-    NSString *uuid=[dObject objectForType:kQSYojimboPlugInType];
-    [[self script] executeSubroutine:@"show_item" arguments:uuid error:nil];
+- (QSObject *)showObject:(QSObject *)dObject
+{
+    NSString *uuid = [dObject objectForType:kQSYojimboPlugInType];
+    [Yojimbo reveal:[self yojimboItemWithUUID:uuid]];
     return nil;
 }
+
+# pragma mark - Quicksilver Validation
 
 - (NSArray *) validActionsForDirectObject:(QSObject *)dObject indirectObject:(QSObject *)iObject{
     // the list of actions to return
@@ -158,4 +150,13 @@
     QSObject *textObject=[QSObject textProxyObjectWithDefaultValue:@""];
     return [NSArray arrayWithObject:textObject];
 }
+
+# pragma mark - Helpers
+
+- (id)yojimboItemWithUUID:(NSString *)uuid
+{
+    // use UUID to locate and return a Scripting Bridge object
+    return [[Yojimbo databaseItems] objectWithID:uuid];
+}
+
 @end

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		7F492FF70A16E3D100643204 /* QSYojimboPlugInAction.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F492FF50A16E3D100643204 /* QSYojimboPlugInAction.m */; };
-		7F49303B0A16EC3900643204 /* Yojimbo.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 7F49301F0A16E9AD00643204 /* Yojimbo.scpt */; };
 		7F4930B70A175E0B00643204 /* QSYojimboPlugInSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F4930B60A175E0B00643204 /* QSYojimboPlugInSource.m */; };
 		8D1AC9700486D14A00FE50C9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD92D38A0106425D02CA0E72 /* Cocoa.framework */; };
 		D426EB8C157D40D000B551E6 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D426EB8A157D40C100B551E6 /* ScriptingBridge.framework */; };
@@ -43,7 +42,6 @@
 		32DBCF980370C29C00C91783 /* QSYojimboPlugInDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSYojimboPlugInDefines.h; sourceTree = "<group>"; };
 		7F492FF50A16E3D100643204 /* QSYojimboPlugInAction.m */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.objc; path = QSYojimboPlugInAction.m; sourceTree = "<group>"; };
 		7F492FF60A16E3D100643204 /* QSYojimboPlugInAction.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = QSYojimboPlugInAction.h; sourceTree = "<group>"; };
-		7F49301F0A16E9AD00643204 /* Yojimbo.scpt */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.scpt; path = Yojimbo.scpt; sourceTree = "<group>"; };
 		7F4930B50A175E0B00643204 /* QSYojimboPlugInSource.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = QSYojimboPlugInSource.h; sourceTree = "<group>"; };
 		7F4930B60A175E0B00643204 /* QSYojimboPlugInSource.m */ = {isa = PBXFileReference; fileEncoding = 30; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = QSYojimboPlugInSource.m; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
 		8D1AC9730486D14A00FE50C9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
@@ -86,7 +84,6 @@
 		0259C582FE90428111CA0C5A /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7F49301F0A16E9AD00643204 /* Yojimbo.scpt */,
 				8D1AC9730486D14A00FE50C9 /* Info.plist */,
 				D4F7C8B7157D40030082861B /* Yojimbo.app */,
 			);
@@ -201,7 +198,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7F49303B0A16EC3900643204 /* Yojimbo.scpt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
