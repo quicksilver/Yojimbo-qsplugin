@@ -134,7 +134,6 @@
 - (NSArray *) objectsForEntry:(NSDictionary *)theEntry
 {
 	NSMetadataQuery *query = [[NSMetadataQuery alloc] init];
-	[query setValueListAttributes:[NSArray arrayWithObject:NSMetadataItemPathKey]];
 	// find all Yojimbo items belonging to the user
 	NSArray *yojimboItems = [query resultsForSearchString:@"kMDItemKind LIKE 'Yojimbo*'" inFolders:[NSSet setWithObject:NSMetadataQueryUserHomeScope]];
 ;
@@ -158,7 +157,7 @@
 	
 	NSString *yojimboItem = nil;
 	for (NSMetadataItem *result in yojimboItems) {
-		yojimboItem = [result valueForAttribute:NSMetadataItemPathKey];
+		yojimboItem = [result valueForAttribute:@"kMDItemPath"];
 		NSDictionary *item = [NSDictionary dictionaryWithContentsOfFile:yojimboItem];
 		newObject = nil;
 		
