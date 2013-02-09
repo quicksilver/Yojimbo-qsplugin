@@ -169,7 +169,7 @@
 		0259C573FE90428111CA0C5A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0460;
 			};
 			buildConfigurationList = 7F6B3EEF085CE8DF000735A8 /* Build configuration list for PBXProject "QSYojimboPlugIn" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -234,6 +234,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D4F65F7F16C6E2AB0055A6FE /* QSPlugIn.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				PRODUCT_NAME = "Yojimbo Module";
 			};
 			name = Debug;
@@ -242,6 +243,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D4F65F7F16C6E2AB0055A6FE /* QSPlugIn.xcconfig */;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				PRODUCT_NAME = "Yojimbo Module";
 			};
 			name = Release;
@@ -250,6 +252,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D4F65F7D16C6E2AB0055A6FE /* Debug.xcconfig */;
 			buildSettings = {
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 			};
 			name = Debug;
 		};
@@ -257,6 +264,11 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D4F65F8116C6E2AB0055A6FE /* Release.xcconfig */;
 			buildSettings = {
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 			};
 			name = Release;
 		};
