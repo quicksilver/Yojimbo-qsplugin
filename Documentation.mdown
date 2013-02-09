@@ -1,9 +1,4 @@
-<!--
-This is the source for the extendedDescription in the Info.plist.
-Documentation should be updated here, then converted to HTML and pasted into the plist file.
--->
-
-# Yojimbo Module #
+# Yojimbo Plugin #
 
 ## Overview ##
 

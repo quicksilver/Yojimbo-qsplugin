@@ -147,10 +147,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7F6B3EEB085CE8DF000735A8 /* Build configuration list for PBXNativeTarget "Yojimbo Module" */;
 			buildPhases = (
+				E1022B2806B3475D00299BEC /* Update Version and Documentation */,
 				8D1AC9660486D14A00FE50C9 /* Resources */,
 				8D1AC96A0486D14A00FE50C9 /* Sources */,
 				8D1AC96E0486D14A00FE50C9 /* Frameworks */,
-				E1022B2806B3475D00299BEC /* ShellScript */,
 			);
 			buildRules = (
 				D426EB8E157D40FB00B551E6 /* PBXBuildRule */,
@@ -201,18 +201,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		E1022B2806B3475D00299BEC /* ShellScript */ = {
+		E1022B2806B3475D00299BEC /* Update Version and Documentation */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Update Version and Documentation";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = "$SRCROOT/bltrversion $INFOPLIST_FILE";
+			shellScript = $QS_BUILD_ROOT/Tools/bltrversion;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -235,7 +236,7 @@
 			baseConfigurationReference = D4F65F7F16C6E2AB0055A6FE /* QSPlugIn.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				PRODUCT_NAME = "Yojimbo Module";
+				PRODUCT_NAME = "Yojimbo Plugin";
 			};
 			name = Debug;
 		};
@@ -244,7 +245,7 @@
 			baseConfigurationReference = D4F65F7F16C6E2AB0055A6FE /* QSPlugIn.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				PRODUCT_NAME = "Yojimbo Module";
+				PRODUCT_NAME = "Yojimbo Plugin";
 			};
 			name = Release;
 		};
