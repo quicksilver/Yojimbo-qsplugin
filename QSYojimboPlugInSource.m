@@ -57,7 +57,7 @@
 		NSMutableArray *matchingTags = [NSMutableArray arrayWithCapacity:1];
 		NSMutableArray *children = [NSMutableArray arrayWithCapacity:1];
 		// track which tags we're combining
-		NSMutableArray *navigationHistory = [NSMutableArray arrayWithArray:[object objectForMeta:@"navigationHistory"]];
+		NSMutableArray *navigationHistory = [NSMutableArray arrayWithArray:[object objectForCache:@"navigationHistory"]];
 		if (navigationHistory)
 		{
 			[navigationHistory addObject:[object name]];
@@ -115,7 +115,7 @@
 			[transientTag setObject:[tagObject objectForMeta:@"items"] forMeta:@"items"];
 			[transientTag setObject:kQSYojimboTagType forMeta:@"itemKind"];
 			[transientTag setDetails:@"Yojimbo Tag"];
-			[transientTag setObject:navigationHistory forMeta:@"navigationHistory"];
+			[transientTag setObject:navigationHistory forCache:@"navigationHistory"];
 			[children addObject:transientTag];
 		}
 		[object setChildren:children];
