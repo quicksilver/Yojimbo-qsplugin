@@ -6,9 +6,7 @@
 //
 
 #import "QSYojimboPlugInSource.h"
-#import <QSCore/QSObject.h>
 #import "QSYojimboPlugInDefines.h"
-
 
 @implementation QSYojimboPlugInSource
 - (BOOL)indexIsValidFromDate:(NSDate *)indexDate forEntry:(NSDictionary *)theEntry{

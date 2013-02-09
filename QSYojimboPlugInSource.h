@@ -6,8 +6,6 @@
 //  Copyright __MyCompanyName__ 2006. All rights reserved.
 //
 
-#import <QSCore/QSObjectSource.h>
-
 @interface QSYojimboPlugInSource : QSObjectSource
 {
 	NSPersistentStoreCoordinator *persistentStoreCoordinator;
