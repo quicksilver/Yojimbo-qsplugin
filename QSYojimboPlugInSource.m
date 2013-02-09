@@ -17,10 +17,10 @@
 	   the good news is we can bail out if we find just one that's updated */
 	NSString *path = [@"~/Library/Caches/Metadata/com.barebones.yojimbo" stringByStandardizingPath];
 	NSFileManager *manager = [NSFileManager defaultManager];
-	NSArray *contents = [manager directoryContentsAtPath:path];
+	NSArray *contents = [manager contentsOfDirectoryAtPath:path error:nil];
 	for (NSString *topLevelDir in contents) {
 		topLevelDir = [path stringByAppendingPathComponent:topLevelDir];
-		for (NSString *secondLevelDir in [manager directoryContentsAtPath:topLevelDir]) {
+		for (NSString *secondLevelDir in [manager contentsOfDirectoryAtPath:topLevelDir error:nil]) {
 			secondLevelDir = [topLevelDir stringByAppendingPathComponent:secondLevelDir];
 			NSDate *modified = [[manager attributesOfItemAtPath:secondLevelDir error:NULL] fileModificationDate];
 			if ([indexDate compare:modified] == NSOrderedAscending) {
@@ -95,7 +95,7 @@
 					}
 				}
 			} else if ([[object identifier] isEqualToString:@"yojimbotag:untagged"]
-					&& [[yojimboItem objectForMeta:@"tags"] count] == 0
+					&& [(NSArray *)[yojimboItem objectForMeta:@"tags"] count] == 0
 					&& ![yojimboItem containsType:kQSYojimboTagType]
 			   )
 			// list items with no tags
