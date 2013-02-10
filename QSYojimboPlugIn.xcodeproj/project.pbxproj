@@ -37,7 +37,7 @@
 		7F4930B50A175E0B00643204 /* QSYojimboPlugInSource.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = QSYojimboPlugInSource.h; sourceTree = "<group>"; };
 		7F4930B60A175E0B00643204 /* QSYojimboPlugInSource.m */ = {isa = PBXFileReference; fileEncoding = 30; indentWidth = 2; lastKnownFileType = sourcecode.c.objc; path = QSYojimboPlugInSource.m; sourceTree = "<group>"; tabWidth = 2; usesTabs = 0; };
 		8D1AC9730486D14A00FE50C9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		8D1AC9740486D14A00FE50C9 /* Yojimbo Module.qsplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Yojimbo Module.qsplugin"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1AC9740486D14A00FE50C9 /* Yojimbo Plugin.qsplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Yojimbo Plugin.qsplugin"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D426EB8A157D40C100B551E6 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
 		D44F168F157D492500C14FE2 /* QSFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QSFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D44F1692157D493000C14FE2 /* QSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QSCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -91,7 +91,7 @@
 		1ED78706FE9D4A0611CA0C5A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D1AC9740486D14A00FE50C9 /* Yojimbo Module.qsplugin */,
+				8D1AC9740486D14A00FE50C9 /* Yojimbo Plugin.qsplugin */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -160,7 +160,7 @@
 			name = "Yojimbo Module";
 			productInstallPath = "$(HOME)/Developer/Palettes";
 			productName = QSYojimboPlugIn;
-			productReference = 8D1AC9740486D14A00FE50C9 /* Yojimbo Module.qsplugin */;
+			productReference = 8D1AC9740486D14A00FE50C9 /* Yojimbo Plugin.qsplugin */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
