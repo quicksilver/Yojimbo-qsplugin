@@ -116,6 +116,11 @@
 
 - (QSObject *)showObject:(QSObject *)dObject
 {
+    if (![Yojimbo isRunning]) {
+        // give it time to wake up or the item won't get selected
+        [Yojimbo activate];
+        sleep(1);
+    }
 	NSString *uuid = [dObject objectForType:kQSYojimboPlugInType];
 	[Yojimbo reveal:[self yojimboItemWithUUID:uuid]];
 	return nil;
