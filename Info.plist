@@ -317,6 +317,13 @@
 				<key>name</key>
 				<string>Yojimbo Items</string>
 			</dict>
+			<key>qs.yojimbo.tag</key>
+			<dict>
+				<key>icon</key>
+				<string>com.barebones.yojimbo4</string>
+				<key>name</key>
+				<string>Yojimbo Tags</string>
+			</dict>
 		</dict>
 	</dict>
 	<key>QSRequirements</key>
