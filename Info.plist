@@ -328,6 +328,17 @@
 	</dict>
 	<key>QSRequirements</key>
 	<dict>
+		<key>bundles</key>
+		<array>
+			<dict>
+				<key>id</key>
+				<string>com.barebones.yojimbo4</string>
+				<key>name</key>
+				<string>Yojimbo</string>
+				<key>version</key>
+				<string>4.0.0</string>
+			</dict>
+		</array>
 		<key>version</key>
 		<string>4001</string>
 	</dict>
