@@ -157,6 +157,9 @@
 	for (NSMetadataItem *result in yojimboItems) {
 		yojimboItem = [result valueForAttribute:@"kMDItemPath"];
 		NSDictionary *item = [NSDictionary dictionaryWithContentsOfFile:yojimboItem];
+		if (!item) {
+			continue;
+		}
 		newObject = nil;
 		
 		@try {
