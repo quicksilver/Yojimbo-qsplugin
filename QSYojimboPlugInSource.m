@@ -62,7 +62,7 @@
 		{
 			[navigationHistory addObject:[object name]];
 		} else {
-			navigationHistory = [NSArray arrayWithObject:[object name]];
+			navigationHistory = [NSMutableArray arrayWithObject:[object name]];
 		}
 		// NSLog(@"current navigation history: %@", navigationHistory);
 		/* on the assumption that it's easier to find tags by typing and
