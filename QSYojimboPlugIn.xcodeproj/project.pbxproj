@@ -12,8 +12,6 @@
 		8D1AC9700486D14A00FE50C9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD92D38A0106425D02CA0E72 /* Cocoa.framework */; };
 		D426EB8C157D40D000B551E6 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D426EB8A157D40C100B551E6 /* ScriptingBridge.framework */; };
 		D426EB8D157D40F200B551E6 /* Yojimbo.app in Sources */ = {isa = PBXBuildFile; fileRef = D4F7C8B7157D40030082861B /* Yojimbo.app */; };
-		D44F1694157D4A6100C14FE2 /* QSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44F1692157D493000C14FE2 /* QSCore.framework */; };
-		D44F1695157D4A6300C14FE2 /* QSFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D44F168F157D492500C14FE2 /* QSFoundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -39,8 +37,6 @@
 		8D1AC9730486D14A00FE50C9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1AC9740486D14A00FE50C9 /* Yojimbo Plugin.qsplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Yojimbo Plugin.qsplugin"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D426EB8A157D40C100B551E6 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
-		D44F168F157D492500C14FE2 /* QSFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QSFoundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D44F1692157D493000C14FE2 /* QSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = QSCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F65F7C16C6E2AB0055A6FE /* Common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
 		D4F65F7D16C6E2AB0055A6FE /* Debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Debug.xcconfig; sourceTree = "<group>"; };
 		D4F65F7E16C6E2AB0055A6FE /* Developer.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Developer.xcconfig; sourceTree = "<group>"; };
@@ -58,8 +54,6 @@
 			files = (
 				8D1AC9700486D14A00FE50C9 /* Cocoa.framework in Frameworks */,
 				D426EB8C157D40D000B551E6 /* ScriptingBridge.framework in Frameworks */,
-				D44F1695157D4A6300C14FE2 /* QSFoundation.framework in Frameworks */,
-				D44F1694157D4A6100C14FE2 /* QSCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,8 +93,6 @@
 		2E58F364FFB232C311CA0CBA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				D44F1692157D493000C14FE2 /* QSCore.framework */,
-				D44F168F157D492500C14FE2 /* QSFoundation.framework */,
 				D426EB8A157D40C100B551E6 /* ScriptingBridge.framework */,
 				DD92D38A0106425D02CA0E72 /* Cocoa.framework */,
 			);
@@ -137,15 +129,15 @@
 				D4F65F8116C6E2AB0055A6FE /* Release.xcconfig */,
 			);
 			name = Configuration;
-			path = ../../../../../../private/tmp/QS/Configuration;
-			sourceTree = "<group>";
+			path = /private/tmp/QS/Configuration;
+			sourceTree = "<absolute>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8D1AC9600486D14A00FE50C9 /* Yojimbo Module */ = {
+		8D1AC9600486D14A00FE50C9 /* Yojimbo Plugin */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 7F6B3EEB085CE8DF000735A8 /* Build configuration list for PBXNativeTarget "Yojimbo Module" */;
+			buildConfigurationList = 7F6B3EEB085CE8DF000735A8 /* Build configuration list for PBXNativeTarget "Yojimbo Plugin" */;
 			buildPhases = (
 				E1022B2806B3475D00299BEC /* Update Version and Documentation */,
 				8D1AC9660486D14A00FE50C9 /* Resources */,
@@ -157,7 +149,7 @@
 			);
 			dependencies = (
 			);
-			name = "Yojimbo Module";
+			name = "Yojimbo Plugin";
 			productInstallPath = "$(HOME)/Developer/Palettes";
 			productName = QSYojimboPlugIn;
 			productReference = 8D1AC9740486D14A00FE50C9 /* Yojimbo Plugin.qsplugin */;
@@ -185,7 +177,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D1AC9600486D14A00FE50C9 /* Yojimbo Module */,
+				8D1AC9600486D14A00FE50C9 /* Yojimbo Plugin */,
 			);
 		};
 /* End PBXProject section */
@@ -213,7 +205,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
-			shellScript = $QS_BUILD_ROOT/Tools/bltrversion;
+			shellScript = "\"$QS_BUILD_ROOT/Tools/bltrversion\"";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -236,7 +228,7 @@
 			baseConfigurationReference = D4F65F7F16C6E2AB0055A6FE /* QSPlugIn.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				PRODUCT_NAME = "Yojimbo Plugin";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
@@ -245,7 +237,7 @@
 			baseConfigurationReference = D4F65F7F16C6E2AB0055A6FE /* QSPlugIn.xcconfig */;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				PRODUCT_NAME = "Yojimbo Plugin";
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -253,11 +245,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D4F65F7D16C6E2AB0055A6FE /* Debug.xcconfig */;
 			buildSettings = {
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 			};
 			name = Debug;
 		};
@@ -265,18 +252,13 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D4F65F8116C6E2AB0055A6FE /* Release.xcconfig */;
 			buildSettings = {
-				CLANG_WARN_CONSTANT_CONVERSION = YES;
-				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INT_CONVERSION = YES;
-				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		7F6B3EEB085CE8DF000735A8 /* Build configuration list for PBXNativeTarget "Yojimbo Module" */ = {
+		7F6B3EEB085CE8DF000735A8 /* Build configuration list for PBXNativeTarget "Yojimbo Plugin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				7F6B3EEC085CE8DF000735A8 /* Debug */,
