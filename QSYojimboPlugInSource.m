@@ -13,7 +13,7 @@
 	/* the bad news is we have to look at every frakking parent folder
 	   (looking at individual items would miss deletions)
 	   the good news is we can bail out if we find just one that's updated */
-	NSString *path = [@"~/Library/Caches/Metadata/com.barebones.yojimbo" stringByStandardizingPath];
+	NSString *path = [@"~/Library/Caches/Metadata/com.barebones.yojimbo4" stringByStandardizingPath];
 	NSFileManager *manager = [NSFileManager defaultManager];
 	NSArray *contents = [manager contentsOfDirectoryAtPath:path error:nil];
 	for (NSString *topLevelDir in contents) {
@@ -32,7 +32,8 @@
 	return YES;
 }
 
-- (NSImage *) iconForEntry:(NSDictionary *)dict{
+- (NSImage *)iconForEntry:(NSDictionary *)dict
+{
 	return [QSResourceManager imageNamed:@"com.barebones.yojimbo"];
 }
 
@@ -138,12 +139,12 @@
 	[query release];
 	// pretty names for various types of items Yojimbo stores
 	NSDictionary *typeTable = [NSDictionary dictionaryWithObjectsAndKeys:
-		@"Yojimbo Note", @"com.barebones.yojimbo.yojimbonote",
-		@"Yojimbo Bookmark", @"com.barebones.yojimbo.yojimbobookmark",
-		@"Yojimbo Web Archive", @"com.barebones.yojimbo.yojimbowebarchive",
-		@"Yojimbo PDF Archive", @"com.barebones.yojimbo.yojimbopdfarchive",
-		@"Yojimbo Serial Number", @"com.barebones.yojimbo.yojimboserialnumber",
-		@"Yojimbo Image", @"com.barebones.yojimbo.yojimboimage",
+		@"Yojimbo Note", @"com.barebones.yojimbo4.yojimbonote",
+		@"Yojimbo Bookmark", @"com.barebones.yojimbo4.yojimbobookmark",
+		@"Yojimbo Web Archive", @"com.barebones.yojimbo4.yojimbowebarchive",
+		@"Yojimbo PDF Archive", @"com.barebones.yojimbo4.yojimbopdfarchive",
+		@"Yojimbo Serial Number", @"com.barebones.yojimbo4.yojimboserialnumber",
+		@"Yojimbo Image", @"com.barebones.yojimbo4.yojimboimage",
 		nil
 	];
 	
@@ -163,14 +164,8 @@
 		newObject = nil;
 		
 		@try {
-			if ([[item valueForKey:@"itemKind"] isEqualToString:@"com.barebones.yojimbo.yojimbobookmark"]) {
-				// Christ, BareBones! You can't settle on a capitalization scheme for dictionary keys?
-				NSString *URLString;
-				if ([item valueForKey:@"URLString"]) {
-					URLString = [item valueForKey:@"URLString"];
-				} else if ([item valueForKey:@"urlString"]) {
-					URLString = [item valueForKey:@"urlString"];
-				}
+			if ([[item valueForKey:@"itemKind"] isEqualToString:@"com.barebones.yojimbo4.yojimbobookmark"]) {
+				NSString *URLString = [item valueForKey:@"URLString"];
 				newObject = [QSObject URLObjectWithURL:URLString title:[item valueForKey:@"name"]];
 			} else {
 				newObject = [QSObject objectWithName:[item valueForKey:@"name"]];
@@ -184,7 +179,7 @@
 			}
 			[newObject setIdentifier:[item valueForKey:@"uuid"]];
 			[newObject setObject:[item valueForKey:@"uuid"] forType:kQSYojimboPlugInType];
-			if ([[item valueForKey:@"itemKind"] isEqualToString:@"com.barebones.yojimbo.yojimbonote"] && [item valueForKey:@"content"])
+			if ([[item valueForKey:@"itemKind"] isEqualToString:@"com.barebones.yojimbo4.yojimbonote"] && [item valueForKey:@"content"])
 			{
 				// this will enable actions like "Paste" and "Large Type" for notes
 				[newObject setObject:[item valueForKey:@"content"] forType:QSTextType];
@@ -255,10 +250,10 @@
 	// set some useful icons depending on the type of object
 	if ([[object objectForMeta:@"itemKind"] isEqualToString:kQSYojimboTagType])
 	{
-		[object setIcon:[QSResourceManager imageNamed:@"com.barebones.yojimbo"]];
-	} else if ([[object objectForMeta:@"itemKind"] isEqualToString:@"com.barebones.yojimbo.yojimbopdfarchive"]) {
+		[object setIcon:[QSResourceManager imageNamed:@"com.barebones.yojimbo4"]];
+	} else if ([[object objectForMeta:@"itemKind"] isEqualToString:@"com.barebones.yojimbo4.yojimbopdfarchive"]) {
 		[object setIcon:[[NSWorkspace sharedWorkspace] iconForFileType:@"pdf"]];
-	} else if ([[object objectForMeta:@"itemKind"] isEqualToString:@"com.barebones.yojimbo.yojimbobookmark"]) {
+	} else if ([[object objectForMeta:@"itemKind"] isEqualToString:@"com.barebones.yojimbo4.yojimbobookmark"]) {
 		[object setIcon:[QSResourceManager imageNamed:@"DefaultBookmarkIcon"]];
 	} else {
 		[object setIcon:[[NSWorkspace sharedWorkspace] iconForFileType:@"yojimbonote"]];

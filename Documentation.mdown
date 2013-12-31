@@ -4,7 +4,7 @@
 
 This plug-in allows you to quickly find, add, and modify items in your Yojimbo library using Quicksilver. It also makes great use of your tags.
 
-This plug-in works with Yojimbo 2.x. It will not work with 1.x. All actions that add or modify items in Yojimbo's library use BareBones supported scripting.
+This plug-in works with Yojimbo 4 or higher. All actions that add or modify items in Yojimbo's library use BareBones supported scripting.
 
 ## Actions ##
 

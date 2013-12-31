@@ -17,9 +17,9 @@
 	<key>CFBundlePackageType</key>
 	<string>BNDL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>2.2.0</string>
+	<string>3.0.0</string>
 	<key>CFBundleVersion</key>
-	<string>121</string>
+	<string>122</string>
 	<key>QSActions</key>
 	<dict>
 		<key>QSYojimboAddAction</key>
@@ -47,7 +47,7 @@
 			<key>displaysResult</key>
 			<true/>
 			<key>icon</key>
-			<string>com.barebones.yojimbo</string>
+			<string>com.barebones.yojimbo4</string>
 			<key>indirectOptional</key>
 			<false/>
 			<key>indirectTypes</key>
@@ -72,7 +72,7 @@
 			<key>displaysResult</key>
 			<true/>
 			<key>icon</key>
-			<string>com.barebones.yojimbo</string>
+			<string>com.barebones.yojimbo4</string>
 			<key>name</key>
 			<string>Archive to Yojimbo</string>
 		</dict>
@@ -89,7 +89,7 @@
 			<key>enabled</key>
 			<true/>
 			<key>icon</key>
-			<string>com.barebones.yojimbo</string>
+			<string>com.barebones.yojimbo4</string>
 			<key>name</key>
 			<string>Append text…</string>
 			<key>validatesObjects</key>
@@ -120,7 +120,7 @@
 			<key>displaysResult</key>
 			<true/>
 			<key>icon</key>
-			<string>com.barebones.yojimbo</string>
+			<string>com.barebones.yojimbo4</string>
 			<key>indirectOptional</key>
 			<false/>
 			<key>indirectTypes</key>
@@ -147,7 +147,7 @@
 			<key>enabled</key>
 			<true/>
 			<key>icon</key>
-			<string>com.barebones.yojimbo</string>
+			<string>com.barebones.yojimbo4</string>
 			<key>name</key>
 			<string>Prepend text…</string>
 			<key>validatesObjects</key>
@@ -164,7 +164,7 @@
 				<string>qs.yojimbo.item</string>
 			</array>
 			<key>icon</key>
-			<string>com.barebones.yojimbo</string>
+			<string>com.barebones.yojimbo4</string>
 			<key>name</key>
 			<string>Show in Yojimbo</string>
 			<key>precedence</key>
@@ -183,7 +183,7 @@
 				<string>qs.yojimbo.item</string>
 			</array>
 			<key>icon</key>
-			<string>com.barebones.yojimbo</string>
+			<string>com.barebones.yojimbo4</string>
 			<key>indirectOptional</key>
 			<false/>
 			<key>indirectTypes</key>
@@ -215,7 +215,7 @@
 		<string>&lt;h1&gt;Yojimbo Plugin&lt;/h1&gt;
 &lt;h2&gt;Overview&lt;/h2&gt;
 &lt;p&gt;This plug-in allows you to quickly find, add, and modify items in your Yojimbo library using Quicksilver. It also makes great use of your tags.&lt;/p&gt;
-&lt;p&gt;This plug-in works with Yojimbo 2.x. It will not work with 1.x. All actions that add or modify items in Yojimbo's library use BareBones supported scripting.&lt;/p&gt;
+&lt;p&gt;This plug-in works with Yojimbo 4 or higher. All actions that add or modify items in Yojimbo's library use BareBones supported scripting.&lt;/p&gt;
 &lt;h2&gt;Actions&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Add to Yojimbo with Name…&lt;/li&gt;
@@ -267,10 +267,10 @@
 &lt;h3&gt;Note Features&lt;/h3&gt;
 &lt;p&gt;There are a couple of useful tricks specific to notes in Yojimbo. In addition to being able to prepend/append to them, they also support all of the standard actions you can perform on text in Quicksilver like "Paste", "Large Type", "E-mail…", etc. Each of these actions will use a plain-text version of the note's contents.&lt;/p&gt;</string>
 		<key>icon</key>
-		<string>com.barebones.yojimbo</string>
+		<string>com.barebones.yojimbo4</string>
 		<key>relatedBundles</key>
 		<array>
-			<string>com.barebones.yojimbo</string>
+			<string>com.barebones.yojimbo4</string>
 		</array>
 	</dict>
 	<key>QSPresetAdditions</key>
@@ -293,7 +293,7 @@
 		</dict>
 		<key>QSBundleChildHandlers</key>
 		<dict>
-			<key>com.barebones.yojimbo</key>
+			<key>com.barebones.yojimbo4</key>
 			<string>QSYojimboPlugInSource</string>
 		</dict>
 		<key>QSObjectHandlers</key>
@@ -313,7 +313,7 @@
 			<key>qs.yojimbo.item</key>
 			<dict>
 				<key>icon</key>
-				<string>com.barebones.yojimbo</string>
+				<string>com.barebones.yojimbo4</string>
 				<key>name</key>
 				<string>Yojimbo Items</string>
 			</dict>
@@ -322,7 +322,7 @@
 	<key>QSRequirements</key>
 	<dict>
 		<key>version</key>
-		<string>3926</string>
+		<string>4001</string>
 	</dict>
 </dict>
 </plist>

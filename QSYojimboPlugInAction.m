@@ -18,7 +18,7 @@
 {
 	self = [super init];
 	if (self) {
-		Yojimbo = [[SBApplication applicationWithBundleIdentifier:@"com.barebones.yojimbo"] retain];
+		Yojimbo = [[SBApplication applicationWithBundleIdentifier:@"com.barebones.yojimbo4"] retain];
 	}
 	return self;
 }
@@ -137,7 +137,7 @@
 		[actions addObject:@"QSYojimboShowAction"];
 		[actions addObject:@"QSYojimboTagAction"];
 		// only allow prepending/appending to notes
-		if ([[dObject objectForMeta:@"itemKind"] isEqualToString:@"com.barebones.yojimbo.yojimbonote"])
+		if ([[dObject objectForMeta:@"itemKind"] isEqualToString:@"com.barebones.yojimbo4.yojimbonote"])
 		{
 			[actions addObject:@"QSYojimboPrependAction"];
 			[actions addObject:@"QSYojimboAppendAction"];
