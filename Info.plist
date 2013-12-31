@@ -84,7 +84,7 @@
 			<string>appendToNote:content:</string>
 			<key>directTypes</key>
 			<array>
-				<string>com.barebones.yojimbo.item</string>
+				<string>qs.yojimbo.item</string>
 			</array>
 			<key>enabled</key>
 			<true/>
@@ -142,7 +142,7 @@
 			<string>prependToNote:content:</string>
 			<key>directTypes</key>
 			<array>
-				<string>com.barebones.yojimbo.item</string>
+				<string>qs.yojimbo.item</string>
 			</array>
 			<key>enabled</key>
 			<true/>
@@ -161,7 +161,7 @@
 			<string>showObject:</string>
 			<key>directTypes</key>
 			<array>
-				<string>com.barebones.yojimbo.item</string>
+				<string>qs.yojimbo.item</string>
 			</array>
 			<key>icon</key>
 			<string>com.barebones.yojimbo</string>
@@ -180,7 +180,7 @@
 			<string>addTagsToItem:withTags:</string>
 			<key>directTypes</key>
 			<array>
-				<string>com.barebones.yojimbo.item</string>
+				<string>qs.yojimbo.item</string>
 			</array>
 			<key>icon</key>
 			<string>com.barebones.yojimbo</string>
@@ -189,7 +189,7 @@
 			<key>indirectTypes</key>
 			<array>
 				<string>NSString</string>
-				<string>com.barebones.yojimbo.tag</string>
+				<string>qs.yojimbo.tag</string>
 			</array>
 			<key>name</key>
 			<string>Add Tags to Item(s)…</string>
@@ -298,9 +298,9 @@
 		</dict>
 		<key>QSObjectHandlers</key>
 		<dict>
-			<key>com.barebones.yojimbo.item</key>
+			<key>qs.yojimbo.item</key>
 			<string>QSYojimboPlugInSource</string>
-			<key>com.barebones.yojimbo.tag</key>
+			<key>qs.yojimbo.tag</key>
 			<string>QSYojimboPlugInSource</string>
 		</dict>
 		<key>QSObjectSources</key>
@@ -310,7 +310,7 @@
 		</dict>
 		<key>QSTypeDefinitions</key>
 		<dict>
-			<key>com.barebones.yojimbo.item</key>
+			<key>qs.yojimbo.item</key>
 			<dict>
 				<key>icon</key>
 				<string>com.barebones.yojimbo</string>
