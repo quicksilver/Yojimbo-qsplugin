@@ -308,6 +308,20 @@
 			<key>QSYojimboPlugInSource</key>
 			<string>QSYojimboPlugInSource</string>
 		</dict>
+		<key>QSProxies</key>
+		<dict>
+			<key>com.barebones.yojimbo4</key>
+			<dict>
+				<key>name</key>
+				<string>Current Yojimbo Selection</string>
+				<key>providerClass</key>
+				<string>QSYojimboSelectionSource</string>
+				<key>types</key>
+				<array>
+					<string>qs.yojimbo.item</string>
+				</array>
+			</dict>
+		</dict>
 		<key>QSTypeDefinitions</key>
 		<dict>
 			<key>qs.yojimbo.item</key>
