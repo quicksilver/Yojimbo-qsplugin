@@ -264,6 +264,10 @@
 &lt;p&gt;All of the items in your Yojimbo library are added directly to the catalog, so simply typing a few characters of the item's name might be enough to find it, but…&lt;/p&gt;
 &lt;p&gt;All of your tags in Yojimbo are also added to the catalog. If you locate and select a tag, then hit → or /, you will get a list of items in your library that have that tag. You will also get a list of all other tags that those items contain. If you right arrow into one of those tags, you will see items that match both tags and any tags contained by those items that you haven't already arrowed through. Right arrowing into another tag will show items matching all three, etc. This emulates the indispensable behavior of Yojimbo's Tag Explorer.&lt;/p&gt;
 &lt;p&gt;If you locate and select the Yojimbo application itself and hit → or /, you'll go directly to a list of items and tags. From there, you can hit → or / to go "into" a tag or tags as described above. Items with no tags assigned are also available (grouped under "Untagged Items").&lt;/p&gt;
+&lt;dl&gt;
+&lt;dt&gt;NOTE&lt;/dt&gt;
+&lt;dd&gt;If you see duplicate items after upgrading Yojimbo from version 3 to version 4, you'll need to manually delete &lt;code&gt;~/Library/Caches/Metadata/com.barebones.yojimbo&lt;/code&gt;. The duplicates will appear in both Quicksilver and Spotlight until you remove the old copies.&lt;/dd&gt;
+&lt;/dl&gt;
 &lt;h3&gt;Note Features&lt;/h3&gt;
 &lt;p&gt;There are a couple of useful tricks specific to notes in Yojimbo. In addition to being able to prepend/append to them, they also support all of the standard actions you can perform on text in Quicksilver like "Paste", "Large Type", "E-mail…", etc. Each of these actions will use a plain-text version of the note's contents.&lt;/p&gt;</string>
 		<key>icon</key>

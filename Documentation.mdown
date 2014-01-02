@@ -63,6 +63,9 @@ All of your tags in Yojimbo are also added to the catalog. If you locate and sel
 
 If you locate and select the Yojimbo application itself and hit → or /, you'll go directly to a list of items and tags. From there, you can hit → or / to go "into" a tag or tags as described above. Items with no tags assigned are also available (grouped under "Untagged Items").
 
+NOTE
+  : If you see duplicate items after upgrading Yojimbo from version 3 to version 4, you'll need to manually delete `~/Library/Caches/Metadata/com.barebones.yojimbo`. The duplicates will appear in both Quicksilver and Spotlight until you remove the old copies.
+
 ### Note Features ###
 
 There are a couple of useful tricks specific to notes in Yojimbo. In addition to being able to prepend/append to them, they also support all of the standard actions you can perform on text in Quicksilver like "Paste", "Large Type", "E-mail…", etc. Each of these actions will use a plain-text version of the note's contents.
