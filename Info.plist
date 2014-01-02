@@ -282,6 +282,8 @@
 		<dict>
 			<key>ID</key>
 			<string>QSPresetQSYojimboPlugIn</string>
+			<key>icon</key>
+			<string>com.barebones.yojimbo4</string>
 			<key>name</key>
 			<string>Yojimbo Items and Tags</string>
 			<key>source</key>
