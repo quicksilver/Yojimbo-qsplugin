@@ -4,7 +4,7 @@
 
 This plug-in allows you to quickly find, add, and modify items in your Yojimbo library using Quicksilver. It also makes great use of your tags.
 
-This plug-in works with Yojimbo 2.x. It will not work with 1.x. All actions that add or modify items in Yojimbo's library use BareBones supported scripting.
+This plug-in works with Yojimbo 4 or higher. All actions that add or modify items in Yojimbo's library use BareBones supported scripting.
 
 ## Actions ##
 
@@ -62,6 +62,9 @@ All of the items in your Yojimbo library are added directly to the catalog, so s
 All of your tags in Yojimbo are also added to the catalog. If you locate and select a tag, then hit → or /, you will get a list of items in your library that have that tag. You will also get a list of all other tags that those items contain. If you right arrow into one of those tags, you will see items that match both tags and any tags contained by those items that you haven't already arrowed through. Right arrowing into another tag will show items matching all three, etc. This emulates the indispensable behavior of Yojimbo's Tag Explorer.
 
 If you locate and select the Yojimbo application itself and hit → or /, you'll go directly to a list of items and tags. From there, you can hit → or / to go "into" a tag or tags as described above. Items with no tags assigned are also available (grouped under "Untagged Items").
+
+NOTE
+  : If you see duplicate items after upgrading Yojimbo from version 3 to version 4, you'll need to manually delete `~/Library/Caches/Metadata/com.barebones.yojimbo`. The duplicates will appear in both Quicksilver and Spotlight until you remove the old copies.
 
 ### Note Features ###
 
