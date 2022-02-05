@@ -11,7 +11,6 @@
 		7F4930B70A175E0B00643204 /* QSYojimboPlugInSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 7F4930B60A175E0B00643204 /* QSYojimboPlugInSource.m */; };
 		8D1AC9700486D14A00FE50C9 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD92D38A0106425D02CA0E72 /* Cocoa.framework */; };
 		D426EB8C157D40D000B551E6 /* ScriptingBridge.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D426EB8A157D40C100B551E6 /* ScriptingBridge.framework */; };
-		D426EB8D157D40F200B551E6 /* Yojimbo.app in Sources */ = {isa = PBXBuildFile; fileRef = D4F7C8B7157D40030082861B /* Yojimbo.app */; };
 		D4C306C918735805007688BB /* QSYojimboSelectionSource.m in Sources */ = {isa = PBXBuildFile; fileRef = D4C306C818735805007688BB /* QSYojimboSelectionSource.m */; };
 /* End PBXBuildFile section */
 
@@ -21,6 +20,8 @@
 			compilerSpec = com.apple.compilers.proxy.script;
 			filePatterns = "*.app";
 			fileType = pattern.proxy;
+			inputFiles = (
+			);
 			isEditable = 1;
 			outputFiles = (
 				"$(DERIVED_FILES_DIR)/$(INPUT_FILE_BASE).h",
@@ -38,6 +39,7 @@
 		8D1AC9730486D14A00FE50C9 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		8D1AC9740486D14A00FE50C9 /* Yojimbo Plugin.qsplugin */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Yojimbo Plugin.qsplugin"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D426EB8A157D40C100B551E6 /* ScriptingBridge.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScriptingBridge.framework; path = System/Library/Frameworks/ScriptingBridge.framework; sourceTree = SDKROOT; };
+		D451550827AE28A00046CA01 /* Yojimbo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Yojimbo.h; sourceTree = "<group>"; };
 		D4C306C718735805007688BB /* QSYojimboSelectionSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QSYojimboSelectionSource.h; sourceTree = "<group>"; };
 		D4C306C818735805007688BB /* QSYojimboSelectionSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QSYojimboSelectionSource.m; sourceTree = "<group>"; };
 		D4F65F7C16C6E2AB0055A6FE /* Common.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Common.xcconfig; sourceTree = "<group>"; };
@@ -46,7 +48,6 @@
 		D4F65F7F16C6E2AB0055A6FE /* QSPlugIn.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = QSPlugIn.xcconfig; sourceTree = "<group>"; };
 		D4F65F8016C6E2AB0055A6FE /* Quicksilver.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Quicksilver.pch; sourceTree = "<group>"; };
 		D4F65F8116C6E2AB0055A6FE /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Release.xcconfig; sourceTree = "<group>"; };
-		D4F7C8B7157D40030082861B /* Yojimbo.app */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Yojimbo.app; path = /Applications/Yojimbo.app; sourceTree = "<absolute>"; };
 		DD92D38A0106425D02CA0E72 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
@@ -80,7 +81,6 @@
 			isa = PBXGroup;
 			children = (
 				8D1AC9730486D14A00FE50C9 /* Info.plist */,
-				D4F7C8B7157D40030082861B /* Yojimbo.app */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -119,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				32DBCF980370C29C00C91783 /* QSYojimboPlugInDefines.h */,
+				D451550827AE28A00046CA01 /* Yojimbo.h */,
 			);
 			name = "Other Sources";
 			sourceTree = "<group>";
@@ -144,7 +145,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 7F6B3EEB085CE8DF000735A8 /* Build configuration list for PBXNativeTarget "Yojimbo Plugin" */;
 			buildPhases = (
-				E1022B2806B3475D00299BEC /* Update Version and Documentation */,
 				8D1AC9660486D14A00FE50C9 /* Resources */,
 				8D1AC96A0486D14A00FE50C9 /* Sources */,
 				8D1AC96E0486D14A00FE50C9 /* Frameworks */,
@@ -167,6 +167,11 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0460;
+				TargetAttributes = {
+					8D1AC9600486D14A00FE50C9 = {
+						ProvisioningStyle = Manual;
+					};
+				};
 			};
 			buildConfigurationList = 7F6B3EEF085CE8DF000735A8 /* Build configuration list for PBXProject "QSYojimboPlugIn" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -197,29 +202,11 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		E1022B2806B3475D00299BEC /* Update Version and Documentation */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Update Version and Documentation";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 1;
-			shellPath = /bin/sh;
-			shellScript = "\"$QS_BUILD_ROOT/Tools/bltrversion\"";
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		8D1AC96A0486D14A00FE50C9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D426EB8D157D40F200B551E6 /* Yojimbo.app in Sources */,
 				D4C306C918735805007688BB /* QSYojimboSelectionSource.m in Sources */,
 				7F492FF70A16E3D100643204 /* QSYojimboPlugInAction.m in Sources */,
 				7F4930B70A175E0B00643204 /* QSYojimboPlugInSource.m in Sources */,
